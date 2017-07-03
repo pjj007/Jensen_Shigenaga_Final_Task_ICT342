@@ -63,6 +63,7 @@ This project is made for ICT342 - Industry Project course # High-Vis Portal - Un
 ## Acknowledgments
 
 Dr Mark Utting
+Associate Professor Don Kerr
 
 Inspirations:
 
