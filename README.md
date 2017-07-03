@@ -54,7 +54,7 @@ firebase-messaging - Firebase Cloud Messaging (optional).
 ## Authors
 
 * **Paul Jensen** - *Initial work* - [pjj007]https://github.com/pjj007) 
-* **Leo Shigenaga** - *Initial work* - [Shige94](https://github.com/Shige94) 
+* **Leo Shigenaga** - *Initial work* - [Shige94]https://github.com/Shige94
 
 ## License
 
