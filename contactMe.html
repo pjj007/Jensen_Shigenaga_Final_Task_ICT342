@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="style/style.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+
+<!-- menu bar -->
+<div class="top-nav">
+  <div class="nav-content"> <a href="index.html"> <img class="top-left-logo" src="usc_logo.jpg" width="250px" height="75px"> </a>
+    <ul class="nav-top">
+      <li class="active"><a href="index.html">HOME</a></li>
+      <li><a href="caveScene.html">Cave Scene</a></li>
+      <li><a href="collabScene.html">Collab Scene</a></li>
+      <li><a href="singleScene.html">Single Scene</a></li>
+      <li><a href="readMe.html">READ ME</a></li>
+      <li><a href="contactMe.html">CONTACT US</a></li>
+      <li>
+        <button id="btnLogout" class="btn btn-action hide">Log out</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>Contact Form</h2>
+<div class="container">
+  <form action="mailto:pjj007@student.usc.edu.au" method="post" enctype="multipart/form-data">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <label for="email">Email</label>
+    <input type="text" name="mail" placeholder="Your Email address..">
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Type in your question or keyword.." style="height:200px"></textarea>
+    <button onclick="contactSubmit()">Send</button>
+    <input type="reset" value="Reset">
+  </form>
+</div>
+<script>
+function contactSubmit() {
+    alert("Thank you for your enquiry! We will get back to you shortly.");
+}
+</script>
+</body>
+</html>

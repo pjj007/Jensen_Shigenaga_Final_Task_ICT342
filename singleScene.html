@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<title>Welcome to the USC CAVE Scene Preview Application</title>
+<link rel="stylesheet" type="text/css" media="all" href="style/style.css">
+</head>
+
+<body><!-- menu bar -->
+<div class="top-nav">
+  <div class="nav-content">
+  	<a href="index.html">
+  	   <img class="top-left-logo" src="usc_logo.jpg" width="250px" height="75px">
+  	</a>
+  	<ul class="nav-top">
+      <li class="active"><a href="index.html">HOME</a></li>
+      <li><a href="caveScene.html">Cave Scene</a></li>
+      <li><a href="collabScene.html">Collab Scene</a></li>
+      <li><a href="singleScene.html">Single Scene</a></li>
+      <li><a href="readMe.html">READ ME</a></li>
+  		<li><a href="contactMe.html">CONTACT US</a></li>
+  		<li><button id="btnLogout" class="btn btn-action hide">Log out</button></li>
+  	</ul>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div>
+  <h2>UPLOAD YOUR PICTURES</h2>
+
+  <div>
+    <input type="file" id="files" name="files[]" multiple />
+    <table id="palette" ></table>
+  </div>
+
+  <div id="submitbtn">
+   <button type="submit" id="downloadbtn"   onclick="download_images()" value="Download">Download</button>
+    <button type="submit" id="subbtn"   onclick="upload_image()" value="Submit">Submit</button>
+  </div>
+</div>
+
+<div>
+  <h2>Single-screen Display Layout</h2>
+  <div style="overflow-x:auto;">
+
+    <table id="mytab1" onsubmit="make_json(this);">
+        <tr id="tr_1">
+            <td id="tr1_td1" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr1_td2" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr1_td3" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr1_td4" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+        </tr>
+        <tr id="tr_2">
+            <td id="tr2_td1" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr2_td2" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr2_td3" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr2_td4" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+        </tr>
+        <tr id="tr_3">
+            <td id="tr3_td1" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr3_td2" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr3_td3" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr3_td4" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+        </tr>
+        <tr id="tr_4">
+            <td id="tr4_td1" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr4_td2" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr4_td3" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+            <td id="tr4_td4" ondragover="allowDrop(event)" ondrop="drop(event)" ondragstart="dragstart(event)" ondragend="dragend(event)">Drag here</td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<br>
+
+
+
+<button type="submit" id="savebtn" value="Save Scene" onclick="saveJson()">Save Scene</button>
+
+
+<br>
+
+<br>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script src="javascript/upload.js"></script>
+<script src="javascript/dnd.js"></script>
+<script src="javascript/save_json.js"></script>
+
+</html>

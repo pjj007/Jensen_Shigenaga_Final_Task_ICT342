@@ -1,0 +1,309 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/************************************************************************************
+Typography
+*************************************************************************************/
+
+div {
+	font-family: 'Roboto', sans-serif;
+}
+p {
+	font-family: 'Roboto', sans-serif;
+}
+h2 {
+	text-transform: uppercase;
+	font: 300 24px/32px Roboto, sans-serif;
+}
+/************************************************************************************
+Top Main Menu Navigation Elements
+*************************************************************************************/
+
+.top-nav {
+	position: absolute;
+	width: 100%;
+	height: 75px;
+	z-index: 900;
+	background: rgba(0,0,0,0);
+	border: 1px solid black;
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f16f5c', endColorstr='#e80f6a', GradientType=1 );
+}
+.nav-content {
+	width: 1200px;
+	height: 75px;
+	margin: 0 auto;
+}
+.nav-top {
+	float: right;
+	list-style-type: none;/*	background-color: brown;*/
+	margin: 32px 0 0;
+}
+.nav-top li {
+	display: inline;
+	float: left;
+	font-size: 14px; /*	Add a grey right border to all list items, except the last item (last-child) */
+}
+.nav-top li:last-child {
+	border-right: none; /* Add a grey right border to all list items, except the last item (last-child) */
+}
+.nav-top a {
+	text-decoration: none;
+	padding: 0 30px 0 30px;
+	color: #000000;
+}
+.nav-top a:link {
+	color: #000000;
+	padding: 32px 30px 27px 30px;
+}
+.nav-top a:hover {
+	color: #000000;
+}
+.nav-top > .active > a {
+	color: #fcc71f;
+}
+.nav-top > .active-d > a {
+	color: #000;
+}
+img.top-left-logo {
+	float: left;/*	margin-right: 50px;*/
+}
+/************************************************************************************
+	Gallery Upload and Cave Scene layout
+	*************************************************************************************/
+
+
+#holder > * {
+	display: block;
+	margin: auto;
+	max-width: 300px;
+	max-height: 300px;
+}
+#holder {
+	border: 10px dashed #ccc;
+	width: 300px;
+	height: 300px;
+	margin: 20px auto;
+}
+#holder.hover {
+	border: 10px dashed #333;
+}
+#submitbtn {
+	margin: 10px 10px 10px 0;
+}
+#upload-pic {
+	transition: opacity 0.4s ease-in-out;
+	margin: 20px;
+	padding: 40px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+td {
+	/*border: 1px solid black;
+    width: 105%;
+    padding: 15px;*/
+
+	min-height: 100px;
+	width: 200px;
+	width: 15%;
+	height: 100px;
+	border: 3px dashed #ccc;
+	margin: 10px;
+	padding: 10px;
+}
+table {
+	/*border: 1px solid black;*/
+	padding: 10px;
+	margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+#table_layout {
+	border: 1px solid black;
+	width: auto;
+	height: auto;
+}
+.thumb {
+	height: 100px;
+	width: 150px;
+	padding-left: 10px;
+}
+/*.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}*/
+
+	/************************************************************************************
+	Login Page
+	*************************************************************************************/
+
+h2 {
+	font-size: 20px;
+	font-weight: bold;
+}
+form {
+	border: 3px solid #f1f1f1;
+}
+input[type=email], input[type=password] {
+	width: 25%;
+	padding: 12px 20px;
+	/*    margin: 10px 0;*/
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+#btnLogin {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 15%;
+}
+#btnLogin:hover {
+	opacity: 0.8;
+}
+#btnSignUp {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 15%;
+}
+#btnSignUp:hover {
+	opacity: 0.8;
+}
+#btnLogout {
+	/*    width: 10%;*/
+	padding: 10px 18px;
+	background-color: #f44336;
+	/*	text-align: center;*/
+	margin-top: -10px;
+}
+.imgcontainer {
+	text-align: center;
+	margin: 24px 0 12px 0;
+}
+img.avatar {
+	width: 40%;
+	border-radius: 50%;
+}
+.container {
+	padding: 16px;
+}
+span.psw {
+	float: right;
+	padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+span.psw {
+	display: block;
+	float: none;
+}
+.cancelbtn {
+	width: 100%;
+}
+}
+/************************************************************************************
+Readme Page
+*************************************************************************************/
+
+.readme-text {
+	/*text-align: center;*/
+	vertical-align: middle;
+	margin: 40px 40px;
+	top: 50%;
+	/*left: 50%;*/
+	position: relative;
+	line-height: 1.4;
+}
+#main h2 {
+	margin: 40px;
+	font-size: 30px;
+}
+#main h3 {
+	border-bottom: 1px solid #CCCCCC;
+	font: 300 24px/32px Roboto, sans-serif;
+	letter-spacing: -.01em;
+	margin: 40px 0 20px;
+	padding-bottom: 3px;
+}
+#main {
+	position: relative;
+	max-width: 720px;
+	padding: 20px 10px;
+	margin: 0 auto;
+	display: block;
+}
+#main p {
+	padding-bottom: 5px;
+}
+/************************************************************************************
+Contact Us Page
+*************************************************************************************/
+
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+/************************************************************************************
+Table
+*************************************************************************************/
+
+table, td, th {
+	border: 1px solid #ddd;
+	text-align: left;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th {
+	background: #78909c;
+}
+th, td {
+	padding: 15px;
+}
+/************************************************************************************
+Footer
+*************************************************************************************/
+
+hr {
+	border-bottom: 1px solid #ebebeb;
+	max-width: 720px;
+}
+footer p {
+	position: relative;
+	max-width: 720px;
+	padding: 20px 10px;
+	margin: 0 auto;
+	display: block;
+	vertical-align: middle;
+}

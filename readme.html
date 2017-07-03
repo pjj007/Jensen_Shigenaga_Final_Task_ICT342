@@ -1,0 +1,603 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Readme</title>
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="all" href="style/style.css">
+<body>
+<!-- menu bar -->
+<div class="top-nav">
+  <div class="nav-content"> <a href="index.html"> <img class="top-left-logo" src="usc_logo.jpg" width="250px" height="75px"> </a>
+    <ul class="nav-top">
+      <li class="active"><a href="index.html">HOME</a></li>
+      <li><a href="caveScene.html">Cave Scene</a></li>
+      <li><a href="collabScene.html">Collab Scene</a></li>
+      <li><a href="singleScene.html">Single Scene</a></li>
+      <li><a href="readMe.html">READ ME</a></li>
+      <li><a href="contactMe.html">CONTACT US</a></li>
+      <li>
+        <button id="btnLogout" class="btn btn-action hide">Log out</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="main">
+  <h2>README</h2>
+  <hr>
+  <div class="readme-text">
+   
+   <p>The current API key used is under our Gmail Account. This is only for testing purposes.</p>
+   <p>To use this app API, you must register a Gmail account and then get authentication credentials from the user. These credentials can be the user's email address and password. Then, you pass these credentials to the Firebase Authentication SDK. Our backend services will then verify those credentials and return a response to the client. </p>
+   <p>Click this <a href="https://www.firebase.com/login/">Firebase Login</a> link to sign in or sign up for a Firebase account.</p>
+   <p>Read on <strong>Set up public access</strong> section below. Click on the <strong>Authentication </strong>link provided and it will get you through the authorization document.</p>
+   
+   
+   
+    <p>Cloud Storage for Firebase lets you upload and share user generated content, such as images and video, which allows you to build rich media content into your apps. Your data is stored in a <a href="https://cloud.google.com/storage/">Google Cloud Storage bucket</a>, an exabyte scale object storage solution with high availability and global redundancy. Cloud Storage lets you securely upload these files directly from mobile devices and web browsers, handling spotty networks with ease.</p>
+    <h3>Prerequisites</h3>
+    <p><a href="https://firebase.google.com/docs/web/setup">Add and configure the Firebase SDK</a>into your app.</p>
+    <h3>Set up public access</h3>
+    <p>Cloud Storage for Firebase provides a declarative rules language that allows you to define how your data should be structured, how it should be indexed, and when your data can be read from and written to. By default, read and write access to Storage is restricted so only authenticated users can read or write data. To get started without setting up <a href="https://firebase.google.com/docs/auth/">Authentication</a>, <a href="https://firebase.google.com/docs/storage/security/start#sample-rules">you can configure your rules for public access</a>.</p>
+    <p>This does make Storage open to anyone, even people not using your app, so be sure to restrict your Storage again when you set up authentication.</p>
+    <h3>Set up Cloud Storage</h3>
+    <p>You must add your bucket to your Firebase SDK configuration.</p>
+    <p>You'll need your Storage Bucket URL from the <a href="https://console.firebase.google.com/">Firebase console</a> Storage page, under the <b>FILES</b> tab, in the header of the file viewer. Then add the <code><b>storageBucket</b></code> attribute to your config Object:</p>
+    <code> // Set the configuration for your app<br>
+    // TODO: Replace with your project's config object<br>
+    var config = {<br>
+    apiKey: '<<code>your-api-key</code>>',<br>
+    authDomain: '<<code>your-auth-domain</code>>',<br>
+    databaseURL: '<<code>your-database-url</code>>',<br>
+    storageBucket: '<<code>your-storage-bucket</code>>'<br>
+    };<br>
+    firebase.initializeApp(config);<br>
+    <br>
+    // Get a reference to the storage service, which is used to create references in your storage bucket<br>
+    var storage = firebase.storage();<br>
+    </code><br>
+    <p>You're ready to start using Cloud Storage!</p>
+    <p>First, let's learn how to create a <a href="https://firebase.google.com/docs/storage/web/create-reference">Cloud Storage reference</a>.</p>
+    <h3>Advanced setup</h3>
+    <p>There are a few use cases that require additional setup:</p>
+    <ul>
+      <li>Using storage buckets in multiple geographic regions</li>
+      <br>
+      <li>Using storage buckets in different storage classes</li>
+      <br>
+      <li>Using storage buckets with multiple authenticated users in the same app</li>
+      <br>
+    </ul>
+    <p>The first use case is perfect if you have users across the world, and want to store their data near them. For instance, you can create buckets in the US, Europe, and Asia to store data for users in those regions to reduce latency.</p>
+    <p>The second use case is helpful if you have data with different access patterns. For instance: you can set up a multi-regional or regional bucket that stores pictures or other frequently accessed content, and a nearline or coldline bucket that stores user backups or other infrequently accessed content.</p>
+    <p>In either of these use cases, you'll want to <a href="https://firebase.google.com/docs/storage/web/start#use_multiple_storage_buckets">use multiple storage buckets</a>.</p>
+    <p>The third use case is useful if you're building an app, like Google Drive, which lets users have multiple logged in accounts (for instance, a personal account and a work account). You can <a href="https://firebase.google.com/docs/storage/web/start#use_a_custom_firebaseapp">use a custom Firebase App</a> instance to authenticate each additional account.</p>
+    <h4>Use multiple storage buckets</h4>
+    <p>If you want to use a storage bucket other than the default provided above, or use multiple storage buckets in a single app, you can create an instance of <code>firebase.storage</code> that references your custom bucket:</p>
+    <code> // Get a non-default Storage bucket<br>
+    var storage = firebase.app().storage("gs://my-custom-bucket"); </code>
+    <h4>Working with imported buckets</h4>
+    <p>When importing an existing Cloud Storage bucket into Firebase, you'll have to grant Firebase the ability to access these files using the gsutil tool, included in the <a href="https://cloud.google.com/sdk/docs/">Google Cloud SDK</a>:</p>
+    <code> gsutil -m acl ch -r -u firebase-storage@system.gserviceaccount.com:O gs://<<code>your-cloud-storage-bucket</code>> </code>
+    <p>This does not affect newly created buckets, as those have the default access control set to allow Firebase. This is a temporary measure, and will be performed automatically in the future.</p>
+    <h3>Use a custom Firebase App</h3>
+    <p>If you're building a more complicated app using a custom <code>firebase.app.App</code>, you can create an instance of <code>firebase.storage.Storage</code> initialized with that app:</p>
+    <code> // Get the default bucket from a custom firebase.app.App<br>
+    var storage = customApp.storage();<br>
+    <br>
+    // Get a non-default bucket from a custom firebase.app.App<br>
+    var storage = customApp.storage("gs://my-custom-bucket");<br>
+    </code>
+    <h2>Upload Files on Web</h2>
+    <hr>
+    <p>Cloud Storage allows developers to quickly and easily upload files to a <a href="https://cloud.google.com/storage/">Google Cloud Storage</a> bucket provided and managed by Firebase.</p>
+    <p>Since the default Google App Engine app and Firebase share this bucket, configuring public access may make newly uploaded App Engine files publicly accessible as well. Be sure to restrict access to your Storage bucket again when you set up authentication.</p>
+    <p><b>Note: By default, Cloud Storage buckets require Firebase Authentication to upload files. You can change your Firebase Security Rules for Cloud Storage to allow unauthenticated access. Since the default Google App Engine app and Firebase share this bucket, configuring public access may make newly uploaded App Engine files publicly accessible as well. Be sure to restrict access to your Storage bucket again when you set up authentication.</b></p>
+    <h3>Upload Files</h3>
+    <p>To upload a file to Cloud Storage, you first create a reference to the full path of the file, including the file name.</p>
+    <code> // Create a root reference<br>
+    var storageRef = firebase.storage().ref();<br>
+    <br>
+    // Create a reference to 'mountains.jpg'<br>
+    var mountainsRef = storageRef.child('mountains.jpg');<br>
+    <br>
+    // Create a reference to 'images/mountains.jpg'<br>
+    var mountainImagesRef = storageRef.child('images/mountains.jpg');<br>
+    <br>
+    // While the file names are the same, the references point to different files<br>
+    mountainsRef.name === mountainImagesRef.name            // true<br>
+    mountainsRef.fullPath === mountainImagesRef.fullPath    // false<br>
+    </code>
+    <h4>Upload from a Blob or File</h4>
+    <p>Once you've created an appropriate reference, you then call the <code>put()</code> method. <code>put()</code> takes files via the JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/API/File">File</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> APIs and uploads them to Cloud Storage.</p>
+    <code> var file = ... // use the Blob or File API<br>
+    ref.put(file).then(function(snapshot) {<br>
+    console.log('Uploaded a blob or file!');<br>
+    });<br>
+    </code>
+    <h4>Upload from a Byte Array</h4>
+    <p>In addition to the <b>File</b> and <b>Blob</b> types, <code>put()</code> can also upload a <b>Uint8Array</b> to Cloud Storage.</p>
+    <code> // Uint8Array<br>
+    var bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);<br>
+    ref.put(bytes).then(function(snapshot) {<br>
+    console.log('Uploaded an array!');<br>
+    });<br>
+    </code>
+    <h4>Upload from a String</h4>
+    <p>If a <b>Blob</b>, <b>File</b>, or <b>Uint8Array</b> isn't available, you can use the <code>putString()</code> method to upload a raw, <b>base64</b>, <b>base64url</b>, or <b>data_url</b> encoded string to Cloud Storage.</p>
+    <code> // Raw string is the default if no format is provided<br>
+    var message = 'This is my message.';<br>
+    ref.putString(message).then(function(snapshot) {<br>
+    console.log('Uploaded a raw string!');<br>
+    });<br>
+    <br>
+    // Base64 formatted string<br>
+    var message = '5b6p5Y+344GX44G+44GX44Gf77yB44GK44KB44Gn44Go44GG77yB';<br>
+    ref.putString(message, 'base64').then(function(snapshot) {<br>
+    console.log('Uploaded a base64 string!');<br>
+    });<br>
+    <br>
+    // Base64url formatted string<br>
+    var message = '5b6p5Y-344GX44G-44GX44Gf77yB44GK44KB44Gn44Go44GG77yB';<br>
+    ref.putString(message, 'base64url').then(function(snapshot) {<br>
+    console.log('Uploaded a base64url string!');<br>
+    });<br>
+    <br>
+    // Data URL string<br>
+    var message = 'data:text/plain;base64,5b6p5Y+344GX44G+44GX44Gf77yB44GK44KB44Gn44Go44GG77yB';<br>
+    ref.putString(message, 'data_url').then(function(snapshot) {<br>
+    console.log('Uploaded a data_url string!');<br>
+    });<br>
+    </code>
+    <p><code>put()</code> and <code>putString()</code> both return an <b>UploadTask</b> which you can use as a promise, or use to manage and monitor the status of the upload.<br>
+      <br>
+      Since the reference defines the full path to the file, make sure that you are uploading to a non-empty path.</p>
+    <h3>Add File Metadata</h3>
+    <p>When uploading a file, you can also specify metadata for that file. This metadata contains typical file metadata properties such as name, size, and contentType (commonly referred to as MIME type). Cloud Storage automatically infers the content type from the file extension where the file is stored on disk, but if you specify a contentType in the metadata it will override the auto-detected type. If no contentType metadata is specified and the file doesn't have a file extension, Cloud Storage defaults to the type <b>application/octet-stream</b>. More information on file metadata can be found in the <a href="https://firebase.google.com/docs/storage/web/file-metadata">Use File Metadata</a> section.</p>
+    <code> // Create file metadata including the content type<br>
+    var metadata = {<br>
+    contentType: 'image/jpeg',<br>
+    };<br>
+    <br>
+    // Upload the file and metadata<br>
+    var uploadTask = storageRef.child('images/mountains.jpg').put(file, metadata);<br>
+    </code>
+    <h3>Manage Uploads</h3>
+    <p>In addition to starting uploads, you can pause, resume, and cancel uploads using the pause(), resume(), and cancel() methods. Calling pause() or resume() will raise pause or running state changes. Calling the cancel() method results in the upload failing and returning an error indicating that the upload was canceled.</p>
+    <code> // Upload the file and metadata<br>
+    var uploadTask = storageRef.child('images/mountains.jpg').put(file);<br>
+    <br>
+    // Pause the upload<br>
+    uploadTask.pause();<br>
+    <br>
+    // Resume the upload<br>
+    uploadTask.resume();<br>
+    <br>
+    // Cancel the upload<br>
+    uploadTask.cancel();<br>
+    </code>
+    <h3>Monitor Upload Progress</h3>
+    <p>While uploading, the upload task may raise progress events in the <b>state_changed</b> observer, such as:</p>
+    <table>
+      <tr>
+        <th>Event Type</th>
+        <th>Typical usage</th>
+      </tr>
+      <tr>
+        <td><code><b>running</b></code></td>
+        <td>This event fires when the task starts or resumes uploading, and is often used in conjunction with the <b>pause</b> event.</td>
+      </tr>
+      <tr>
+        <td><code><b>progress</b></code></td>
+        <td>This event fires any time data is uploaded to Cloud Storage, and can be used to populate an upload progress indicator.</td>
+      </tr>
+      <tr>
+        <td><code><b>pause</b></code></td>
+        <td> This event fires any time the upload is paused, and is often used in conjunction with the <b>running</b> event.</td>
+      </tr>
+    </table>
+    <br>
+    <p>When an event occurs, a <b>TaskSnapshot</b> object is passed back. This snapshot is an immutable view of the task at the time the event occurred. This object contains the following properties:</p>
+    <table>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code><b>bytesTransferred</b></code></td>
+        <td><code><b>Number</b></code></td>
+        <td>The total number of bytes that have been transferred when this snapshot was taken.</td>
+      </tr>
+      <tr>
+        <td><code><b>totalBytes</b></code></td>
+        <td><code><b>Number</b></code></td>
+        <td>The total number of bytes expected to be uploaded.</td>
+      </tr>
+      <tr>
+        <td><code><b>state</b></code></td>
+        <td><code><b>firebase.storage.TaskState</b></code></td>
+        <td>Current state of the upload.</td>
+      </tr>
+      <tr>
+        <td><code><b>metadata</b></code></td>
+        <td><code><b>firebaseStorage.Metadata</b></code></td>
+        <td>Before upload completes, the metadata sent to the server. After upload completes, the metadata the server sent back.</td>
+      </tr>
+      <tr>
+        <td><code><b>task</b></code></td>
+        <td><code><b>firebaseStorage.Metadata</b></code></td>
+        <td>The task this is a snapshot of, which can be used to `pause`, `resume`, or `cancel` the task.</td>
+      </tr>
+      <tr>
+        <td><code><b>ref</b></code></td>
+        <td><code><b>firebaseStorage.Metadata</b></code></td>
+        <td>The reference this task came from.</td>
+      </tr>
+    </table>
+    <br>
+    <p>These changes in state, combined with the properties of the <b>TaskSnapshot</b> provide a simple yet powerful way to monitor upload events.</p>
+    <code> var uploadTask = storageRef.child('images/rivers.jpg').put(file);<br>
+    <br>
+    // Register three observers:<br>
+    // 1. 'state_changed' observer, called any time the state changes<br>
+    // 2. Error observer, called on failure<br>
+    // 3. Completion observer, called on successful completion<br>
+    uploadTask.on('state_changed', function(snapshot){<br>
+    // Observe state change events such as progress, pause, and resume<br>
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded<br>
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;<br>
+    console.log('Upload is ' + progress + '% done');<br>
+    switch (snapshot.state) {<br>
+    case firebase.storage.TaskState.PAUSED: // or 'paused'<br>
+    console.log('Upload is paused');<br>
+    break;<br>
+    case firebase.storage.TaskState.RUNNING: // or 'running'<br>
+    console.log('Upload is running');<br>
+    break;<br>
+    }<br>
+    }, function(error) {<br>
+    // Handle unsuccessful uploads<br>
+    }, function() {<br>
+    // Handle successful uploads on complete<br>
+    // For instance, get the download URL: https://firebasestorage.googleapis.com/...<br>
+    var downloadURL = uploadTask.snapshot.downloadURL;<br>
+    });<br>
+    </code>
+    <h3>Error Handling</h3>
+    <p>There are a number of reasons why errors may occur on upload, including the local file not existing, or the user not having permission to upload the desired file. More information on errors can be found in the <a href="https://firebase.google.com/docs/storage/web/handle-errors">Handle Errors</a> section of the docs.</p>
+    <h3>Full Example</h3>
+    <p>A full example of an upload with progress monitoring and error handling is shown below:</p>
+    <code> // File or Blob named mountains.jpg<br>
+    var file = ...<br>
+    <br>
+    // Create the file metadata<br>
+    var metadata = {<br>
+    contentType: 'image/jpeg'<br>
+    };<br>
+    <br>
+    // Upload file and metadata to the object 'images/mountains.jpg'<br>
+    var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);<br>
+    <br>
+    // Listen for state changes, errors, and completion of the upload.<br>
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'<br>
+    function(snapshot) {<br>
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded<br>
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;<br>
+    console.log('Upload is ' + progress + '% done');<br>
+    switch (snapshot.state) {<br>
+    case firebase.storage.TaskState.PAUSED: // or 'paused'<br>
+    console.log('Upload is paused');<br>
+    break;<br>
+    case firebase.storage.TaskState.RUNNING: // or 'running'<br>
+    console.log('Upload is running');<br>
+    break;<br>
+    }<br>
+    }, function(error) {<br>
+    <br>
+    // A full list of error codes is available at<br>
+    // https://firebase.google.com/docs/storage/web/handle-errors<br>
+    switch (error.code) {<br>
+    case 'storage/unauthorized':<br>
+    // User doesn't have permission to access the object<br>
+    break;<br>
+    <br>
+    case 'storage/canceled':<br>
+    // User canceled the upload<br>
+    break;<br>
+    <br>
+    ...<br>
+    <br>
+    case 'storage/unknown':<br>
+    // Unknown error occurred, inspect error.serverResponse<br>
+    break;<br>
+    }<br>
+    }, function() {<br>
+    // Upload completed successfully, now we can get the download URL<br>
+    var downloadURL = uploadTask.snapshot.downloadURL;<br>
+    });<br>
+    </code>
+    <h2>Download Files on Web</h2>
+    <hr>
+    <p>Cloud Storage allows developers to quickly and easily download files from a <a href="https://cloud.google.com/storage/">Google Cloud Storage</a> bucket provided and managed by Firebase.</p>
+    <p><b>Note: By default, Cloud Storage buckets require Firebase Authentication to download files. You can change your Firebase Security Rules for Cloud Storage to allow unauthenticated access. Since the default Google App Engine app and Firebase share this bucket, configuring public access may make newly uploaded App Engine files publicly accessible as well. Be sure to restrict access to your Storage bucket again when you set up authentication.</b></p>
+    <h3>Create a Reference</h3>
+    <p>To download a file, first <a href="https://firebase.google.com/docs/storage/web/create-reference">create a Cloud Storage reference</a> to the file you want to download.<br>
+      <br>
+      You can create a reference by appending child paths to the storage root, or you can create a reference from an existing gs:// or https:// URL referencing an object in Cloud Storage.</p>
+    <code> // Create a reference with an initial file path and name<br>
+    var storage = firebase.storage();<br>
+    var pathReference = storage.ref('images/stars.jpg');<br>
+    <br>
+    // Create a reference from a Google Cloud Storage URI<br>
+    var gsReference = storage.refFromURL('gs://bucket/images/stars.jpg')<br>
+    <br>
+    // Create a reference from an HTTPS URL<br>
+    // Note that in the URL, characters are URL escaped!<br>
+    var httpsReference = storage.refFromURL('https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg');<br>
+    </code>
+    <h3>Download Data via URL</h3>
+    <p>You can get the download URL for a file by calling the <b>getDownloadURL()</b> method on a storage reference.</p>
+    <code> storageRef.child('images/stars.jpg').getDownloadURL().then(function(url) {<br>
+    // `url` is the download URL for 'images/stars.jpg'<br>
+    <br>
+    // This can be downloaded directly:<br>
+    var xhr = new XMLHttpRequest();<br>
+    xhr.responseType = 'blob';<br>
+    xhr.onload = function(event) {<br>
+    var blob = xhr.response;<br>
+    };<br>
+    xhr.open('GET', url);<br>
+    xhr.send();<br>
+    <br>
+    // Or inserted into an <img> element:<br>
+    var img = document.getElementById('myimg');<br>
+    img.src = url;<br>
+    }).catch(function(error) {<br>
+    // Handle any errors<br>
+    });<br>
+    </code>
+    <h3>CORS Configuration</h3>
+    <p>To download data directly in the browser, you must configure your Cloud Storage bucket for cross-origin access (CORS). This can be done with the gsutil command line tool, which you can <a href="https://cloud.google.com/storage/docs/gsutil_install">install from here.</a></p>
+    <p>If you don't want any domain-based restrictions (the most common scenario), copy this JSON to a file named <b>cors.json</b>:</p>
+    <code> [<br>
+    {<br>
+    "origin": ["*"],<br>
+    "method": ["GET"],<br>
+    "maxAgeSeconds": 3600<br>
+    }<br>
+    ]<br>
+    </code>
+    <p>Run <b>gsutil cors set cors.json gs://<<code>your-cloud-storage-bucket</code>></b>to deploy these restrictions.</p>
+    <p>See the <a href="https://cloud.google.com/storage/docs/cross-origin">Cloud Storage Docs</a> for more information.</p>
+    <h3>Handle Errors</h3>
+    <p>There are a number of reasons why errors may occur on download, including the file not existing, or the user not having permission to access the desired file. More information on errors can be found in the <a href="https://firebase.google.com/docs/storage/web/handle-errors">Handle Errors</a> section of the docs.</p>
+    <h3>Full Example</h3>
+    <p>A full example of a download with error handling is shown below:</p>
+    <code> // Create a reference to the file we want to download<br>
+    var starsRef = storageRef.child('images/stars.jpg');<br>
+    <br>
+    // Get the download URL<br>
+    starsRef.getDownloadURL().then(function(url) {<br>
+    // Insert url into an <img> tag to "download"<br>
+    }).catch(function(error) {<br>
+    <br>
+    // A full list of error codes is available at<br>
+    // https://firebase.google.com/docs/storage/web/handle-errors<br>
+    switch (error.code) {<br>
+    case 'storage/object_not_found':<br>
+    // File doesn't exist<br>
+    break;<br>
+    <br>
+    case 'storage/unauthorized':<br>
+    // User doesn't have permission to access the object<br>
+    break;<br>
+    <br>
+    case 'storage/canceled':<br>
+    // User canceled the upload<br>
+    break;<br>
+    <br>
+    ...<br>
+    <br>
+    case 'storage/unknown':<br>
+    // Unknown error occurred, inspect the server response<br>
+    break;<br>
+    }<br>
+    });<br>
+    </code>
+    <h2>Installation & Setup in JavaScript</h2>
+    <hr>
+    <p>The Firebase Realtime Database is a cloud-hosted database.<br>
+      Data is stored as JSON and synchronized in realtime to every connected client.<br>
+      When you build cross-platform apps with our iOS, Android, and JavaScript SDKs,<br>
+      all of your clients share one Realtime Database instance and automatically receive updates with the newest data. </p>
+    <h3>Key Capabilities</h3>
+    <h4>Realtime</h4>
+    <p> Instead of typical HTTP requests, the Firebase Realtime Database uses data synchronization—every time data changes,
+      any connected device receives that update within milliseconds.<br>
+      Provide collaborative and immersive experiences without thinking about networking code.</p>
+    <h4>Offline</h4>
+    <p>Firebase apps remain responsive even when offline because the Firebase Realtime Database SDK persists your data to disk.<br>
+      Once connectivity is reestablished, the client device receives any changes it missed, synchronizing it with the current server state. </p>
+    <h4>Accessible from Client Devices</h4>
+    <p>The Firebase Realtime Database can be accessed directly from a mobile device or web browser;
+      there’s no need for an application server.
+      Security and data validation are available through the Firebase Realtime Database Security Rules, expression-based rules that are executed when data is read or written.</p>
+    <h3>How Does It Work?</h3>
+    <p> The Firebase Realtime Database lets you build rich, collaborative applications by allowing secure access to the database directly from client-side code.
+      Data is persisted locally, and even while offline, realtime events continue to fire, giving the end user a responsive experience.
+      When the device regains connection, the Realtime Database synchronizes the local data changes with the remote updates that occurred while the client was offline, merging any conflicts automatically.</p>
+    <br>
+    <p>The Realtime Database provides a flexible, expression-based rules language, called Firebase Realtime Database Security Rules, to define how your data should be structured and when data can be read from or written to.
+      When integrated with Firebase Authentication, developers can define who has access to what data, and how they can access it.</p>
+    <br>
+    <p>The Realtime Database is a NoSQL database and as such has different optimizations and functionality compared to a relational database.
+      The Realtime Database API is designed to only allow operations that can be executed quickly. This enables you to build a great realtime experience that can serve millions of users without compromising on responsiveness.
+      Because of this, it is important to think about how users need to access your data and then structure it accordingly..</p>
+    <h3>Initialize the Realtime Database JavaScript SDK</h3>
+    <p>You must specify your Realtime Database URL when initializing your JavaScript SDK.
+      
+      You can find your Realtime Database URL in the Database tab in the <a href="https://console.firebase.google.com/" data-category="console" data-action="linkClick">Firebase console</a>. It will be in the form of <code>https://databasename.firebaseio.com.</code> Initialize your SDK using the following code snippet:</p>
+    <code>// Set the configuration for your app<br>
+    // TODO: Replace with your project's config object<br>
+    var config = {<br>
+    apiKey: "apiKey",<br>
+    authDomain: "projectId.firebaseapp.com",<br>
+    databaseURL: "https://databaseName.firebaseio.com",<br>
+    storageBucket: "bucket.appspot.com"<br>
+    };<br>
+    firebase.initializeApp(config);<br>
+    <br>
+    // Get a reference to the database service<br>
+    var database = firebase.database();</code> <br>
+    <br>
+    <p>You're ready to start using the Firebase Realtime Database!</p>
+    <br>
+    <br>
+    <h2>Read and Write Data on the Web</h2>
+    <hr>
+    <h3>Get a database reference</h3>
+    <p>You're ready to start using the Firebase Realtime Database!</p>
+    <p>To read or write data from the database, you need an instance of <code>firebase.database.Reference:</code></p>
+    <br>
+    <br>
+    <code> // Get a reference to the database service<br>
+    var database = firebase.database(); </code>
+    <h3>Reading and writing data</h3>
+    <p>This document covers the basics of retrieving data and how to order and filter Firebase data.
+      
+      Firebase data is retrieved by attaching an asynchronous listener to a <code>firebase.database.Reference</code>. <br>
+      <br>
+      The listener is triggered once for the initial state of the data and again anytime the data changes.</p>
+    <p><b>Note: By default, read and write access to your database is restricted so only authenticated users can read or write data. <br>
+      To get started without setting up Authentication, you can configure your rules for public access. <br>
+      This does make your database open to anyone, even people not using your app, so be sure to restrict your database again when you set up authentication.</b></p>
+    <h4>Basic write operations</h4>
+    <p>For basic write operations, you can use <code>set()</code> to save data to a specified reference, replacing any existing data at that path. For example a social blogging application might add a user with <code>set()</code> as follows:</p>
+    <code>function writeUserData(userId, name, email, imageUrl) {<br>
+    firebase.database().ref('users/' + userId).set({<br>
+    username: name,<br>
+    email: email,<br>
+    profile_picture : imageUrl<br>
+    });<br>
+    }</code><br>
+    <h4>Listen for value events</h4>
+    <p>To read data at a path and listen for changes, use the on() oronce() methods of firebase.database.Reference to observe events.</p>
+    <table>
+      <tr>
+        <th>Event</th>
+        <th>Typical usage</th>
+      </tr>
+      <tr>
+        <td><code><b>value</b></code></td>
+        <td>Read and listen for changes to the entire contents of a path.</td>
+      </tr>
+    </table>
+    <br>
+    <p><b>Important: The value event is called every time data is changed at the specified database reference, including changes to children. <br>
+      To limit the size of your snapshots, attach only at the lowest level needed for watching changes. For example, attaching a listener to the root of your database is not recommended.</b></p>
+    <p>The following example demonstrates a social blogging application retrieving the star count of a post from the database:</p>
+    <code>var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');<br>
+    starCountRef.on('value', function(snapshot) {<br>
+    updateStarCount(postElement, snapshot.val());<br>
+    });</code><br>
+    <p>The listener receives a <code>snapshot</code> that contains the data at the specified location in the database at the time of the event. You can retrieve the data in the <code>snapshot</code> with the <code>val()</code> method.</p>
+    <h4>Read data once</h4>
+    <p>In some cases you may want a snapshot of your data without listening for changes, such as when initializing a UI element that you don't expect to change. <br>
+      You can use the <code><b>once()</b></code> method to simplify this scenario: it triggers once and then does not trigger again.</p>
+    <p>This is useful for data that only needs to be loaded once and isn't expected to change frequently or require active listening. For instance, the blogging app in the previous examples uses this method to load a user's profile when they begin authoring a new post:</p>
+    <br>
+    <code> var userId = firebase.auth().currentUser.uid;<br>
+    return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {<br>
+    var username = snapshot.val().username;<br>
+    // ...<br>
+    });<br>
+    </code><br>
+    <h3>Updating or deleting data</h3>
+    <h4>Update specific fields</h4>
+    <p>To simultaneously write to specific children of a node without overwriting other child nodes, use the <code>update()</code> method. <br>
+      <br>
+      When calling <code>update()</code>, you can update lower-level child values by specifying a path for the key. If data is stored in multiple locations to scale better, you can update all instances of that data using data fan-out.<br>
+      <br>
+      For example, a social blogging app might create a post and simultaneously update it to the recent activity feed and the posting user's activity feed using code like this:</p>
+    <code> function writeNewPost(uid, username, picture, title, body) {<br>
+    // A post entry.<br>
+    var postData = {<br>
+    author: username,<br>
+    uid: uid,<br>
+    body: body,<br>
+    title: title,<br>
+    starCount: 0,<br>
+    authorPic: picture<br>
+    };<br>
+    <br>
+    // Get a key for a new Post.<br>
+    var newPostKey = firebase.database().ref().child('posts').push().key;<br>
+    <br>
+    // Write the new post's data simultaneously in the posts list and the user's post list.<br>
+    var updates = {};<br>
+    updates['/posts/' + newPostKey] = postData;<br>
+    updates['/user-posts/' + uid + '/' + newPostKey] = postData;<br>
+    <br>
+    return firebase.database().ref().update(updates);<br>
+    }<br>
+    </code><br>
+    <p>This example uses <code>push()</code> to create a post in the node containing posts for all users at <code>/posts/$postid</code> and simultaneously retrieve the key. The key can then be used to create a second entry in the user's posts at <code>/user-posts/$userid/$postid</code>. <br>
+      <br>
+      Using these paths, you can perform simultaneous updates to multiple locations in the JSON tree with a single call to <code>update()</code>, such as how this example creates the new post in both locations. Simultaneous updates made this way are atomic: either all updates succeed or all updates fail.</p>
+    <h4>Delete data</h4>
+    <p>The simplest way to delete data is to call <code><b>remove()</b></code> on a reference to the location of that data. <br>
+      <br>
+      You can also delete by specifying null as the value for another write operation such as <code><b>set()</b></code> or <code><b>update()</b></code>. You can use this technique with update() to delete multiple children in a single API call.</p>
+    <h4>Receive a <b>Promise</b></h4>
+    <p>To know when your data is committed to the Firebase Realtime Database server, you can use a Promise. Both <code><b>set()</b></code> and <code><b>update()</b></code> can return a Promise you can use to know when the write is committed to the database.</p>
+    <br>
+    <h3>Detach listeners</h3>
+    <p>Callbacks are removed by calling the off() method on your Firebase database reference.<br>
+      <br>
+      You can remove a single listener by passing it as a parameter to <code><b>off()</b></code>. Calling <code><b>off()</b></code> on the location with no arguments removes all listeners at that location.<br>
+      <br>
+      Calling <code><b>off()</b></code> on a parent listener does not automatically remove listeners registered on its child nodes; <code><b>off()</b></code> must also be called on any child listeners to remove the callback.</p>
+    <h3>Save data as transactions</h3>
+    <p>When working with data that could be corrupted by concurrent modifications, such as incremental counters, you can use a transaction operation. You can give this operation an update function and an optional completion callback. The update function takes the current state of the data as an argument and returns the new desired state you would like to write. If another client writes to the location before your new value is successfully written, your update function is called again with the new current value, and the write is retried.</p>
+    <p>For instance, in the example social blogging app, you could allow users to star and unstar posts and keep track of how many stars a post has received as follows:</p>
+    <code> function toggleStar(postRef, uid) {<br>
+    postRef.transaction(function(post) {<br>
+    if (post) {<br>
+    if (post.stars && post.stars[uid]) {<br>
+    post.starCount--;<br>
+    post.stars[uid] = null;<br>
+    } else {<br>
+    post.starCount++;<br>
+    if (!post.stars) {<br>
+    post.stars = {};<br>
+    }<br>
+    post.stars[uid] = true;<br>
+    }<br>
+    }<br>
+    return post;<br>
+    });<br>
+    }<br>
+    </code><br>
+    <p>Using a transaction prevents star counts from being incorrect if multiple users star the same post at the same time or the client had stale data. If the transaction is rejected, the server returns the current value to the client, which runs the transaction again with the updated value. This repeats until the transaction is accepted or you abort the transaction.</p>
+    <p><b>Note: Because your update function is called multiple times, it must be able to handle null data. Even if there is existing data in your remote database, it may not be locally cached when the transaction function is run, resulting in null for the initial value.</b></p>
+    <h3>Write data offline</h3>
+    <p>If a client loses its network connection, your app will continue functioning correctly.<br>
+      Every client connected to a Firebase database maintains its own internal version of any active data. When data is written, it's written to this local version first. The Firebase client then synchronizes that data with the remote database servers and with other clients on a "best-effort" basis.<br>
+      As a result, all writes to the database trigger local events immediately, before any data is written to the server. This means your app remains responsive regardless of network latency or connectivity.<br>
+      Once connectivity is reestablished, your app receives the appropriate set of events so that the client syncs with the current server state, without having to write any custom code.</p>
+    <p><b>Note: The Firebase Realtime Database web APIs do not persist data offline outside of the session. In order for writes to be persisted to the server, the web page must not be closed before the data is written to the server.</b></p>
+  </div>
+</div>
+<hr>
+<footer>
+  <p><strong>Credits:</strong> <a href="https://firebase.google.com/docs/storage/">Google Firebase</a>. </p>
+</footer>
+</body>
+</head>
+</html>
