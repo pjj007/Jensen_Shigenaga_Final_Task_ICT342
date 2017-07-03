@@ -16,7 +16,7 @@ The html files can be opened with Firefox and Google Chrome.
 
 ### Installing
 Copy, then paste the code snippet into your application HTML. The code snippet should look like this:
-
+```
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -30,25 +30,26 @@ Copy, then paste the code snippet into your application HTML. The code snippet s
   };
   firebase.initializeApp(config);
 </script>
-
+```
 ## Deployment
 
 The snippet contains initialization information to configure the Firebase JavaScript SDK to use Authentication, Cloud Storage and the Realtime Database. You can reduce the amount of code your app uses by just including the features you need. The individually installable components are:
-
+```
 firebase-app - The core firebase client (required).
 firebase-auth - Firebase Authentication (optional).
 firebase-database - The Firebase Realtime Database (optional).
 firebase-storage - Cloud Storage (optional).
 firebase-messaging - Firebase Cloud Messaging (optional).
-
+```
+```
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-messaging.js"></script>
-
+```
 ## Built With
 
-* [W3Schools](http://https://www.w3schools.com/) - HTML Tutorials
+* Google Firebase Cloud Storage - (https://firebase.google.com/docs/storage/)
 
 ## Authors
 
@@ -64,6 +65,7 @@ This project is made for ICT342 - Industry Project course # High-Vis Portal - Un
 Dr Mark Utting
 
 Inspirations:
+```
 React-Grid-Layout by STRML (https://github.com/STRML/react-grid-layout)
 Dragula by Bevacqua (https://github.com/bevacqua/dragula)
 Sortable by RubaXa (https://github.com/RubaXa/Sortable)
@@ -72,4 +74,5 @@ Flexbox by Chris Coyier (https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 Native HTML5 Drag and Drop by Eric Bidelman (https://www.html5rocks.com/en/tutorials/dnd/basics/)
 Reading files in JavaScript using the File APIs by Eric Bidelman (https://www.html5rocks.com/en/tutorials/file/dndfiles/)
 HTML5 Drag and Drop by W3Schools (https://www.w3schools.com/html/html5_draganddrop.asp)
+```
 
