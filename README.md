@@ -65,14 +65,14 @@ This project is made for ICT342 - Industry Project course # High-Vis Portal - Un
 Dr Mark Utting
 
 Inspirations:
-```
-React-Grid-Layout by STRML (https://github.com/STRML/react-grid-layout)
-Dragula by Bevacqua (https://github.com/bevacqua/dragula)
-Sortable by RubaXa (https://github.com/RubaXa/Sortable)
-react-motion by Chenglou (https://github.com/chenglou/react-motion)
-Flexbox by Chris Coyier (https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-Native HTML5 Drag and Drop by Eric Bidelman (https://www.html5rocks.com/en/tutorials/dnd/basics/)
-Reading files in JavaScript using the File APIs by Eric Bidelman (https://www.html5rocks.com/en/tutorials/file/dndfiles/)
-HTML5 Drag and Drop by W3Schools (https://www.w3schools.com/html/html5_draganddrop.asp)
-```
+
+* React-Grid-Layout by STRML (https://github.com/STRML/react-grid-layout)
+* Dragula by Bevacqua (https://github.com/bevacqua/dragula)
+* Sortable by RubaXa (https://github.com/RubaXa/Sortable)
+* react-motion by Chenglou (https://github.com/chenglou/react-motion)
+* Flexbox by Chris Coyier (https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* Native HTML5 Drag and Drop by Eric Bidelman (https://www.html5rocks.com/en/tutorials/dnd/basics/)
+* Reading files in JavaScript using the File APIs by Eric Bidelman (https://www.html5rocks.com/en/tutorials/file/dndfiles/)
+* HTML5 Drag and Drop by W3Schools (https://www.w3schools.com/html/html5_draganddrop.asp)
+
 
